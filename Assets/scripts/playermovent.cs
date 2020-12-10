@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 //using UnityEngine.audio;
-//hello
+
 public class playermovent : MonoBehaviour
 {
     
