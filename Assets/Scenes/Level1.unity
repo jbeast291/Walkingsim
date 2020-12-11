@@ -13709,6 +13709,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5160586971989713851, guid: dff07e63c3097d6478817f736be9469c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8737662297729579078, guid: dff07e63c3097d6478817f736be9469c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13823,46 +13828,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3626209275686341408, guid: d57b58d03abd1cf41af63ec41bf7fcd8,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.36888665
-      objectReference: {fileID: 0}
-    - target: {fileID: 3626209275686341408, guid: d57b58d03abd1cf41af63ec41bf7fcd8,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.008061523
-      objectReference: {fileID: 0}
-    - target: {fileID: 3626209275686341408, guid: d57b58d03abd1cf41af63ec41bf7fcd8,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.0015076889
-      objectReference: {fileID: 0}
-    - target: {fileID: 3626209275686341408, guid: d57b58d03abd1cf41af63ec41bf7fcd8,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.92943823
-      objectReference: {fileID: 0}
-    - target: {fileID: 3626209275686341408, guid: d57b58d03abd1cf41af63ec41bf7fcd8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -43.294003
-      objectReference: {fileID: 0}
-    - target: {fileID: 3626209275686341408, guid: d57b58d03abd1cf41af63ec41bf7fcd8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -1.092
-      objectReference: {fileID: 0}
-    - target: {fileID: 3626209275686341408, guid: d57b58d03abd1cf41af63ec41bf7fcd8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0.24800001
-      objectReference: {fileID: 0}
-    - target: {fileID: 3626209276984558988, guid: d57b58d03abd1cf41af63ec41bf7fcd8,
-        type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 381584289}
     - target: {fileID: 3626209276984558988, guid: d57b58d03abd1cf41af63ec41bf7fcd8,
         type: 3}
       propertyPath: jumppadsound

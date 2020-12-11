@@ -27,10 +27,14 @@ public class playermovent : MonoBehaviour
     bool isOnJumpPad;// a boolian to check if the player is on a jump pad
     bool isGrounded;// a boolian to check if the player is on the ground
     bool isOnSpeedPad;// a boolian to check if the player is on a speed pad
-    bool issped;// a boolian to see if the player hasnt touch the ground so they are able to move fast still
+    bool issped;// a boolian to see if the player hasnt touch the ground so they are able to move fast still\
+
+    int Counter = 0;
+    bool PadSoundLoop;
 
     public AudioSource jumppadsound;
     public AudioSource SpeedPadSoundStart;
+    public AudioSource SpeedPadSoundEnd;
     public AudioSource jump;
     //public
     Vector3 velocity;
@@ -39,6 +43,7 @@ public class playermovent : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1f;
+        
     }
 
     // Update is called once per frame
@@ -68,11 +73,23 @@ public class playermovent : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
-        //if(isOnSpeedPad)
-        //{
-        //SpeedPadSoundStart.Play();
+        if(isOnSpeedPad)
+        {
+            if(Counter == 0 && PadSoundLoop == false)
+            {
+                SpeedPadSoundStart.Play();
+                Counter = 1;
+            }
 
-        //}
+        }
+        if(isOnSpeedPad == false && Counter == 1 && issped == false)
+        {
+            SpeedPadSoundEnd.Play();
+            Counter = 0;
+            PadSoundLoop = false;
+        }
+        // Ctrl + K, Ctrl + C = comments out a block of code
+
         
 
 
@@ -118,6 +135,7 @@ public class playermovent : MonoBehaviour
         }    
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
-
+        
+        
     }
 }
