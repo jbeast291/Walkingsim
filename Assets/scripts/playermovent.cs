@@ -24,10 +24,15 @@ public class playermovent : MonoBehaviour
     public float SpeedpadDistance = 0.4f;//used to check the distance to a speed pad
     public LayerMask SpeedPadMask;//used to check if the player is on the speed pad
 
+    public Transform VisiblePadCheck;
+    public float VisiblePadDistance = 0.4f;
+    public LayerMask VisiblePadMask;
+
     bool isOnJumpPad;// a boolian to check if the player is on a jump pad
     bool isGrounded;// a boolian to check if the player is on the ground
     bool isOnSpeedPad;// a boolian to check if the player is on a speed pad
-    bool issped;// a boolian to see if the player hasnt touch the ground so they are able to move fast still\
+    bool issped;// a boolian to see if the player hasnt touch the ground so they are able to move fast still
+    bool isOnVisiblePad;
 
     int Counter = 0;
     bool PadSoundLoop;
@@ -56,6 +61,7 @@ public class playermovent : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);// bool for checking if the player is grounded
         isOnJumpPad = Physics.CheckSphere(padCheck.position, groundDistanceToPad, GroundPadMask);// bool for checking if the player is on a jump pad
         isOnSpeedPad = Physics.CheckSphere(speedPadCheck.position, SpeedpadDistance, SpeedPadMask);// bool for checking if the player is on a speed pad
+        isOnVisiblePad = Physics.CheckSphere(VisiblePadCheck.position, VisiblePadDistance, VisiblePadMask);
 
         if(isGrounded && velocity.y < 0)
         {
