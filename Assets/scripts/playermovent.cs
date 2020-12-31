@@ -28,11 +28,16 @@ public class playermovent : MonoBehaviour
     public float VisiblePadDistance = 0.4f;
     public LayerMask VisiblePadMask;
 
+    public Transform Invisableblockcheck;
+    public float invIsableblockDistance = 0.4f;
+    public LayerMask invisableBlockMask;
+
     bool isOnJumpPad;// a boolian to check if the player is on a jump pad
     bool isGrounded;// a boolian to check if the player is on the ground
     bool isOnSpeedPad;// a boolian to check if the player is on a speed pad
     bool issped;// a boolian to see if the player hasnt touch the ground so they are able to move fast still
-    bool isOnVisiblePad;
+    public bool isOnVisiblePad;
+    public bool invisableBlock;
 
     int Counter = 0;
     bool PadSoundLoop;
@@ -48,7 +53,7 @@ public class playermovent : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1f;
-        
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -62,11 +67,28 @@ public class playermovent : MonoBehaviour
         isOnJumpPad = Physics.CheckSphere(padCheck.position, groundDistanceToPad, GroundPadMask);// bool for checking if the player is on a jump pad
         isOnSpeedPad = Physics.CheckSphere(speedPadCheck.position, SpeedpadDistance, SpeedPadMask);// bool for checking if the player is on a speed pad
         isOnVisiblePad = Physics.CheckSphere(VisiblePadCheck.position, VisiblePadDistance, VisiblePadMask);
+        invisableBlock = Physics.CheckSphere(Invisableblockcheck.position, invIsableblockDistance, invisableBlockMask);
 
         if(isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
+        if(isOnJumpPad && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        } 
+        if(isOnSpeedPad && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        } 
+        if(isOnVisiblePad && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
+        if(invisableBlock && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }  
 
         float x = Input.GetAxis("Horizontal");// gets the x Axis
         float z = Input.GetAxis("Vertical");// gets the y Axis
@@ -113,12 +135,28 @@ public class playermovent : MonoBehaviour
             {
                 jump.Play();
             }
+            if(isOnVisiblePad)
+            {
+                jump.Play();
+            }
+            if(invisableBlock)
+            {
+                jump.Play();
+            }
         }
 
         if(Input.GetButtonDown("Jump") && isOnJumpPad)// make the player do a higher jump if they are on a pad
         {
             velocity.y = Mathf.Sqrt(jumpPadForce * -2f * gravity);
 
+        }
+        if(isOnVisiblePad && Input.GetButtonDown("Jump"))
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity); 
+        }
+        if(invisableBlock && Input.GetButtonDown("Jump"))
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity); 
         }
 
         if(isOnSpeedPad)// if the player is on the speed pad it will set issped to true and make the player run faster
