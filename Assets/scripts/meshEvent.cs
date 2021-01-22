@@ -5,14 +5,27 @@ using UnityEngine.Events;
 
 public class meshEvent : MonoBehaviour
 {
-    [SerializeField] private UnityEvent myTrigger;
+    [SerializeField] private UnityEvent activateCubeTrigger;
+
+    [SerializeField] private UnityEvent deactivateCubeTrigger;
+
 
     private void OnTriggerEnter(Collider other) 
     {
         if (other.CompareTag("Player"))
         {
-            myTrigger.Invoke();
+            activateCubeTrigger.Invoke();
             Debug.Log("pad");
         }
+        
     }
+    private void OnTriggerExit(Collider other) 
+    {
+        if (other.CompareTag("Player"))
+        {
+            deactivateCubeTrigger.Invoke();
+            Debug.Log("paddeactivate");
+        }
+        
+    }    
 }
