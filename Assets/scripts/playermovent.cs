@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 //using UnityEngine.audio;
@@ -39,7 +39,8 @@ public class playermovent : MonoBehaviour
     public bool isOnVisiblePad;
     public bool invisableBlock;
 
-    int Counter = 0;
+    int SpeedCounter = 0;
+    int InvisCounter = 0;
     bool PadSoundLoop;
 
     public AudioSource jumppadsound;
@@ -103,20 +104,20 @@ public class playermovent : MonoBehaviour
 
         if(isOnSpeedPad)
         {
-            if(Counter == 0 && PadSoundLoop == false)
+            if(SpeedCounter == 0)
             {
                 SpeedPadSoundStart.Play();
-                Counter = 1;
+                SpeedCounter = 1;
             }
 
         }
-        if(isOnSpeedPad == false && Counter == 1 && issped == false)
+        if(isOnSpeedPad == false && SpeedCounter == 1 && issped == false)
         {
             SpeedPadSoundEnd.Play();
-            Counter = 0;
-            PadSoundLoop = false;
+            SpeedCounter = 0;
         }
         // Ctrl + K, Ctrl + C = comments out a block of code
+
 
         
 

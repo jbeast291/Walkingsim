@@ -9,13 +9,16 @@ public class meshEvent : MonoBehaviour
 
     [SerializeField] private UnityEvent deactivateCubeTrigger;
 
+    public AudioSource Visablepadon;
+    public AudioSource Visablepadoff;
+
 
     private void OnTriggerEnter(Collider other) 
     {
         if (other.CompareTag("Player"))
         {
             activateCubeTrigger.Invoke();
-            Debug.Log("pad");
+            Visablepadon.Play();
         }
         
     }
@@ -24,7 +27,6 @@ public class meshEvent : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             deactivateCubeTrigger.Invoke();
-            Debug.Log("paddeactivate");
         }
         
     }    
