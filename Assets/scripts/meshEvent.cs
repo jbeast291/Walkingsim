@@ -27,6 +27,7 @@ public class meshEvent : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             deactivateCubeTrigger.Invoke();
+            Visablepadoff.Play();
         }
         
     }    

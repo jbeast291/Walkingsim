@@ -615,12 +615,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1243881717}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &120387734 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 183733736, guid: d57b58d03abd1cf41af63ec41bf7fcd8,
-    type: 3}
-  m_PrefabInstance: {fileID: 535667400}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &132038310
 GameObject:
   m_ObjectHideFlags: 0
@@ -3585,8 +3579,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  Visablepadon: {fileID: 0}
-  Visablepadoff: {fileID: 0}
+  Visablepadon: {fileID: 1105053234}
+  Visablepadoff: {fileID: 1468187209}
 --- !u!65 &435478021
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4531,8 +4525,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  Visablepadon: {fileID: 0}
-  Visablepadoff: {fileID: 0}
+  Visablepadon: {fileID: 1105053234}
+  Visablepadoff: {fileID: 1468187209}
 --- !u!65 &497560275
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10122,8 +10116,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  Visablepadon: {fileID: 0}
-  Visablepadoff: {fileID: 0}
+  Visablepadon: {fileID: 1105053234}
+  Visablepadoff: {fileID: 1468187209}
 --- !u!65 &1098508746
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15113,6 +15107,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!82 &1468187209 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1468187209, guid: d57b58d03abd1cf41af63ec41bf7fcd8,
+    type: 3}
+  m_PrefabInstance: {fileID: 535667400}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1504928580
 Mesh:
   m_ObjectHideFlags: 0
@@ -17033,8 +17033,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  Visablepadon: {fileID: 0}
-  Visablepadoff: {fileID: 0}
+  Visablepadon: {fileID: 1105053234}
+  Visablepadoff: {fileID: 1468187209}
 --- !u!65 &1597085448
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20635,6 +20635,11 @@ PrefabInstance:
       propertyPath: Visablepadon
       value: 
       objectReference: {fileID: 1105053234}
+    - target: {fileID: 7923182861404049541, guid: b735a7e187b11644f8ab3f3a52d4d51d,
+        type: 3}
+      propertyPath: Visablepadoff
+      value: 
+      objectReference: {fileID: 1468187209}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b735a7e187b11644f8ab3f3a52d4d51d, type: 3}
 --- !u!43 &1833537608
@@ -20643,7 +20648,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-43000
+  m_Name: pb_Mesh-1592
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -22366,8 +22371,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  Visablepadon: {fileID: 0}
-  Visablepadoff: {fileID: 0}
+  Visablepadon: {fileID: 1105053234}
+  Visablepadoff: {fileID: 1468187209}
 --- !u!65 &1922213132
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25844,6 +25849,6 @@ PrefabInstance:
         type: 3}
       propertyPath: Visablepadoff
       value: 
-      objectReference: {fileID: 120387734}
+      objectReference: {fileID: 1468187209}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b735a7e187b11644f8ab3f3a52d4d51d, type: 3}
