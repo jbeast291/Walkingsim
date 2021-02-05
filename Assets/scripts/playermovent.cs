@@ -16,20 +16,16 @@ public class playermovent : MonoBehaviour
 
     public float jumpPadForce = 10f;//the force of the sjumppad
     public Transform padCheck;//used to check if the player is on a jump pad
-    public float groundDistanceToPad = 0.4f;//checks the distance to a jump pad
     public LayerMask GroundPadMask;//used to check if the player is standing on a speed pad
 
     public float SpeedMod = 3f;//speed pad multiplier
     public Transform speedPadCheck;//used to check if the player is on a speed pad
-    public float SpeedpadDistance = 0.4f;//used to check the distance to a speed pad
     public LayerMask SpeedPadMask;//used to check if the player is on the speed pad
 
     public Transform VisiblePadCheck;
-    public float VisiblePadDistance = 0.4f;
     public LayerMask VisiblePadMask;
 
     public Transform Invisableblockcheck;
-    public float invIsableblockDistance = 0.4f;
     public LayerMask invisableBlockMask;
 
     bool isOnJumpPad;// a boolian to check if the player is on a jump pad
@@ -40,7 +36,6 @@ public class playermovent : MonoBehaviour
     public bool invisableBlock;
 
     int SpeedCounter = 0;
-    int InvisCounter = 0;
     bool PadSoundLoop;
 
     public AudioSource jumppadsound;
@@ -49,6 +44,8 @@ public class playermovent : MonoBehaviour
     public AudioSource jump;
     //public
     Vector3 velocity;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -60,15 +57,14 @@ public class playermovent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //TODO: fix the bug were the player cant jump over the wall if they are on a corner
-        //TODO: the player will gain infinite velocity if standing on a speed pad and not on a ground
+        //TODO: fix the bug were the player cant jump over the wall if they are on a corner :-(
         //
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);// bool for checking if the player is grounded
-        isOnJumpPad = Physics.CheckSphere(padCheck.position, groundDistanceToPad, GroundPadMask);// bool for checking if the player is on a jump pad
-        isOnSpeedPad = Physics.CheckSphere(speedPadCheck.position, SpeedpadDistance, SpeedPadMask);// bool for checking if the player is on a speed pad
-        isOnVisiblePad = Physics.CheckSphere(VisiblePadCheck.position, VisiblePadDistance, VisiblePadMask);
-        invisableBlock = Physics.CheckSphere(Invisableblockcheck.position, invIsableblockDistance, invisableBlockMask);
+        isOnJumpPad = Physics.CheckSphere(padCheck.position, groundDistance, GroundPadMask);// bool for checking if the player is on a jump pad
+        isOnSpeedPad = Physics.CheckSphere(speedPadCheck.position, groundDistance, SpeedPadMask);// bool for checking if the player is on a speed pad
+        isOnVisiblePad = Physics.CheckSphere(VisiblePadCheck.position, groundDistance, VisiblePadMask);
+        invisableBlock = Physics.CheckSphere(Invisableblockcheck.position, groundDistance, invisableBlockMask);
 
         if(isGrounded && velocity.y < 0)
         {
@@ -95,7 +91,6 @@ public class playermovent : MonoBehaviour
         float z = Input.GetAxis("Vertical");// gets the y Axis
 
         Vector3 move = transform.right * x + transform.forward * z;// makes a vector3 for the movement code
-        
 
         if(Input.GetButtonDown("Jump") && isGrounded)// makes the player jump if they are on the ground
         {
@@ -160,6 +155,8 @@ public class playermovent : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity); 
         }
 
+
+
         if(isOnSpeedPad)// if the player is on the speed pad it will set issped to true and make the player run faster
         {
             if(Input.GetButtonDown("Jump"))//allows the player to jump if they are on a speed pad
@@ -181,6 +178,17 @@ public class playermovent : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
         
-        
+
+
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            transform.localScale = new Vector3(1,1,1);
+            groundDistance = 0.4f;
+        }
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            transform.localScale = new Vector3(3,1,1);
+            groundDistance = 1.5f;
+        }
     }
 }
