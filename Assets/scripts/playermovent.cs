@@ -28,12 +28,16 @@ public class playermovent : MonoBehaviour
     public Transform Invisableblockcheck;
     public LayerMask invisableBlockMask;
 
+    public Transform THICKPADCHECK;
+    public LayerMask THICKPADMASK;
+
     bool isOnJumpPad;// a boolian to check if the player is on a jump pad
     bool isGrounded;// a boolian to check if the player is on the ground
     bool isOnSpeedPad;// a boolian to check if the player is on a speed pad
     bool issped;// a boolian to see if the player hasnt touch the ground so they are able to move fast still
     public bool isOnVisiblePad;
     public bool invisableBlock;
+    bool isonTHICKPAD;
 
     int SpeedCounter = 0;
     bool PadSoundLoop;
@@ -65,6 +69,7 @@ public class playermovent : MonoBehaviour
         isOnSpeedPad = Physics.CheckSphere(speedPadCheck.position, groundDistance, SpeedPadMask);// bool for checking if the player is on a speed pad
         isOnVisiblePad = Physics.CheckSphere(VisiblePadCheck.position, groundDistance, VisiblePadMask);
         invisableBlock = Physics.CheckSphere(Invisableblockcheck.position, groundDistance, invisableBlockMask);
+        isonTHICKPAD = Physics.CheckSphere(THICKPADCHECK.position, groundDistance, THICKPADMASK);
 
         if(isGrounded && velocity.y < 0)
         {
@@ -83,6 +88,10 @@ public class playermovent : MonoBehaviour
             velocity.y = -2f;
         }
         if(invisableBlock && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }  
+        if(isonTHICKPAD && velocity.y < 0)
         {
             velocity.y = -2f;
         }  
@@ -139,6 +148,10 @@ public class playermovent : MonoBehaviour
             {
                 jump.Play();
             }
+            if(isonTHICKPAD)
+            {
+                jump.Play();
+            }
         }
 
         if(Input.GetButtonDown("Jump") && isOnJumpPad)// make the player do a higher jump if they are on a pad
@@ -154,6 +167,11 @@ public class playermovent : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity); 
         }
+        if(isonTHICKPAD && Input.GetButtonDown("Jump"))
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity); 
+        }
+        
 
 
 
@@ -183,12 +201,27 @@ public class playermovent : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.K))
         {
             transform.localScale = new Vector3(1,1,1);
+            GameObject Fps_Player = GameObject.Find("fps player");
+            GameObject Capsule = Fps_Player.transform.GetChild(1).gameObject;
+            Capsule.transform.localPosition = new Vector3(0,0,0);
+
+            GameObject Camera = Fps_Player.transform.GetChild(0).gameObject;
+            Camera.transform.localPosition = new Vector3(0.15f,3.38f,-4.59f);
             groundDistance = 0.4f;
         }
-        if(Input.GetKeyDown(KeyCode.L))
+        if(isonTHICKPAD)
         {
-            transform.localScale = new Vector3(3,1,1);
-            groundDistance = 1.5f;
+            transform.localScale = new Vector3(3,1,3);
+
+            GameObject Fps_Player = GameObject.Find("fps player");
+            GameObject Capsule = Fps_Player.transform.GetChild(1).gameObject;
+            Capsule.transform.localPosition = new Vector3(0,-1,0);
+            Capsule.transform.localScale = new Vector3(1,0.5f,1);
+
+            GameObject Camera = Fps_Player.transform.GetChild(0).gameObject;
+            Camera.transform.localPosition = new Vector3(0,3,-2);
+
+            groundDistance = 1f;
         }
     }
 }
