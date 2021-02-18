@@ -15,20 +15,15 @@ public class playermovent : MonoBehaviour
     public LayerMask groundMask;// checks if the player is standing on the ground
 
     public float jumpPadForce = 10f;//the force of the sjumppad
-    public Transform padCheck;//used to check if the player is on a jump pad
     public LayerMask GroundPadMask;//used to check if the player is standing on a speed pad
 
     public float SpeedMod = 3f;//speed pad multiplier
-    public Transform speedPadCheck;//used to check if the player is on a speed pad
     public LayerMask SpeedPadMask;//used to check if the player is on the speed pad
 
-    public Transform VisiblePadCheck;
     public LayerMask VisiblePadMask;
 
-    public Transform Invisableblockcheck;
     public LayerMask invisableBlockMask;
 
-    public Transform THICKPADCHECK;
     public LayerMask THICKPADMASK;
 
     bool isOnJumpPad;// a boolian to check if the player is on a jump pad
@@ -65,11 +60,11 @@ public class playermovent : MonoBehaviour
         //
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);// bool for checking if the player is grounded
-        isOnJumpPad = Physics.CheckSphere(padCheck.position, groundDistance, GroundPadMask);// bool for checking if the player is on a jump pad
-        isOnSpeedPad = Physics.CheckSphere(speedPadCheck.position, groundDistance, SpeedPadMask);// bool for checking if the player is on a speed pad
-        isOnVisiblePad = Physics.CheckSphere(VisiblePadCheck.position, groundDistance, VisiblePadMask);
-        invisableBlock = Physics.CheckSphere(Invisableblockcheck.position, groundDistance, invisableBlockMask);
-        isonTHICKPAD = Physics.CheckSphere(THICKPADCHECK.position, groundDistance, THICKPADMASK);
+        isOnJumpPad = Physics.CheckSphere(groundCheck.position, groundDistance, GroundPadMask);// bool for checking if the player is on a jump pad
+        isOnSpeedPad = Physics.CheckSphere(groundCheck.position, groundDistance, SpeedPadMask);// bool for checking if the player is on a speed pad
+        isOnVisiblePad = Physics.CheckSphere(groundCheck.position, groundDistance, VisiblePadMask);
+        invisableBlock = Physics.CheckSphere(groundCheck.position, groundDistance, invisableBlockMask);
+        isonTHICKPAD = Physics.CheckSphere(groundCheck.position, groundDistance, THICKPADMASK);
 
         if(isGrounded && velocity.y < 0)
         {
@@ -207,21 +202,21 @@ public class playermovent : MonoBehaviour
 
             GameObject Camera = Fps_Player.transform.GetChild(0).gameObject;
             Camera.transform.localPosition = new Vector3(0.15f,3.38f,-4.59f);
-            groundDistance = 0.4f;
+
         }
         if(isonTHICKPAD)
         {
-            transform.localScale = new Vector3(3,1,3);
+            transform.localScale = new Vector3(3,0.5f,3);
 
             GameObject Fps_Player = GameObject.Find("fps player");
             GameObject Capsule = Fps_Player.transform.GetChild(1).gameObject;
-            Capsule.transform.localPosition = new Vector3(0,-1,0);
-            Capsule.transform.localScale = new Vector3(1,0.5f,1);
+            Capsule.transform.localPosition = new Vector3(0,-2.25f,0);
+
+            GameObject GroundCheckObject = Fps_Player.transform.GetChild(2).gameObject;
+            GroundCheckObject.transform.localPosition = new Vector3(0,-3,0);
 
             GameObject Camera = Fps_Player.transform.GetChild(0).gameObject;
-            Camera.transform.localPosition = new Vector3(0,3,-2);
-
-            groundDistance = 1f;
+            Camera.transform.localPosition = new Vector3(0,9,-1.5f);
         }
     }
 }
