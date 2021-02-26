@@ -10,6 +10,14 @@ public class mainmenu : MonoBehaviour
 
     public GameObject levelmenuebutton; 
 
+    void Start()
+    {
+        if(devmode == true)
+        {
+            Debug.Log("devmode active");
+        }
+    }
+
     public void PlayGame ()
     {
         SceneManager.LoadScene(1);
@@ -26,7 +34,6 @@ public class mainmenu : MonoBehaviour
         if(devmode == true)
         {
             levelmenuebutton.SetActive(true);
-            Debug.Log("devmode active");
         }
         if(devmode == false)
         {

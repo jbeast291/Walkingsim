@@ -41,6 +41,7 @@ public class playermovent : MonoBehaviour
     public AudioSource SpeedPadSoundStart;
     public AudioSource SpeedPadSoundEnd;
     public AudioSource jump;
+
     //public
     Vector3 velocity;
 
@@ -217,6 +218,11 @@ public class playermovent : MonoBehaviour
 
             GameObject Camera = Fps_Player.transform.GetChild(0).gameObject;
             Camera.transform.localPosition = new Vector3(0,9,-1.5f);
+
+
+        
         }
+
+
     }
 }

@@ -520,8 +520,6 @@ GameObject:
   - component: {fileID: 3626209276370261225}
   - component: {fileID: 3626209276370261229}
   - component: {fileID: 3626209276370261228}
-  - component: {fileID: 3626209276370261231}
-  - component: {fileID: 3626209276370261230}
   m_Layer: 0
   m_Name: capsule
   m_TagString: Player
@@ -590,38 +588,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &3626209276370261231
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3626209276370261224}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!143 &3626209276370261230
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3626209276370261224}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3626209276984558990
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,6 +599,7 @@ GameObject:
   - component: {fileID: 3626209276984558989}
   - component: {fileID: 3626209276984558988}
   - component: {fileID: 3626209276984558991}
+  - component: {fileID: 1192581063}
   m_Layer: 0
   m_Name: fps player
   m_TagString: Player
@@ -683,24 +650,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   jumpPadForce: 30
-  padCheck: {fileID: 0}
   GroundPadMask:
     serializedVersion: 2
     m_Bits: 512
   SpeedMod: 3
-  speedPadCheck: {fileID: 0}
   SpeedPadMask:
     serializedVersion: 2
     m_Bits: 1024
-  VisiblePadCheck: {fileID: 0}
   VisiblePadMask:
     serializedVersion: 2
     m_Bits: 2048
-  Invisableblockcheck: {fileID: 0}
   invisableBlockMask:
     serializedVersion: 2
     m_Bits: 4096
-  THICKPADCHECK: {fileID: 0}
   THICKPADMASK:
     serializedVersion: 2
     m_Bits: 8192
@@ -728,6 +690,22 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1192581063
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3626209276984558990}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1315526322
 PrefabInstance:
   m_ObjectHideFlags: 0
