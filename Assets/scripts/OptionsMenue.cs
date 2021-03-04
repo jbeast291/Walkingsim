@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
 public class OptionsMenue : MonoBehaviour
 {
     Dropdown Var_Dropdown;
@@ -18,7 +19,6 @@ public class OptionsMenue : MonoBehaviour
                 DropdownValueChanged();
             });
     }
-
     void Update()
     {
         Var_DropdownValue = Var_Dropdown.value;

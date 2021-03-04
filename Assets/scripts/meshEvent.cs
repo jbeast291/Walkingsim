@@ -9,6 +9,8 @@ public class meshEvent : MonoBehaviour
 
     [SerializeField] private UnityEvent deactivateCubeTrigger;
 
+    [SerializeField] private UnityEvent ChangeScaleTigger;
+
     public AudioSource Visablepadon;
     public AudioSource Visablepadoff;
 
@@ -30,5 +32,5 @@ public class meshEvent : MonoBehaviour
             Visablepadoff.Play();
         }
         
-    }    
+    }
 }

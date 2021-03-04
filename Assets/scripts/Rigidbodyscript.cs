@@ -4,47 +4,41 @@ using UnityEngine;
 
 public class Rigidbodyscript : MonoBehaviour
 {
+    public Rigidbody rb;
+    public Transform _camera;
 
-    public Rigidbody RigidbodyVar;
-    public float MaxSpeed;
-    public float JumpForce;
-    public bool canjump;
+    public float moveSpeed = 6f;
+    public float jumpForce = 10f;
 
+    public LayerMask Ground;
 
-    // Start is called before the first frame update
-    //void Start()
-    //{
-        
-    //}
+    bool isGrounded;
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void Start()
     {
-        HorizontalMovement();
+        Time.timeScale = 1f;
     }
 
-    void HorizontalMovement()
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            if (RigidbodyVar.velocity.z < MaxSpeed)
-            {
-                RigidbodyVar.AddForce(RigidbodyVar.transform.forward * MaxSpeed, ForceMode.VelocityChange);
-            }
-        }
+        //grounding
+        isGrounded = Physics.CheckSphere(new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), 0.4f, Ground);
 
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            if (RigidbodyVar.velocity.z < MaxSpeed)
-            {
-                RigidbodyVar.AddForce(RigidbodyVar.transform.forward * -MaxSpeed, ForceMode.VelocityChange);
-            }
-        }
+
+        //facing direction
+        Debug.DrawLine(_camera.position, transform.forward * 2.5f);
+
+        //moving
+        float x = Input.GetAxisRaw("Horizontal") * moveSpeed;
+        float y = Input.GetAxisRaw("Vertical") * moveSpeed;
+
+        //jumping
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+
+        //setting movement
+        Vector3 move = transform.right * x + transform.forward * y;
+
+        rb.velocity = new Vector3(move.x, rb.velocity.y,move.z);
     }
-    //void MaxSpeedClamp()
-    //{
-    //    if (!Input.GetKeyDown(KeyCode.D))
-    //}
-
-    
 }
