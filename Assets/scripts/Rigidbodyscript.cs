@@ -7,18 +7,25 @@ public class Rigidbodyscript : MonoBehaviour
     public Rigidbody rb;
     public Transform _camera;
 
+    private CapsuleCollider capsuleCollider;
+
     public float moveSpeed = 6f;
     public float BaseMoveSpeed = 6f;
     public float jumpForce = 10f;
     public float jumpPadForce = 30f;
     public float SpeedPadMulti = 10f;
     float Speedcounter = 1f;
+    bool isTHICK = false;
+    bool hastouchedground = false;
+    float grounddistance = 0.4f;
+    float collisionDistance = 1f;
 
     public LayerMask Ground;
     public LayerMask Jumppad;
     public LayerMask SpeedPad;
     public LayerMask VisablePad;
     public LayerMask VisablePadground;
+    public LayerMask THICKpad;
 
 
     bool isGrounded;
@@ -26,6 +33,7 @@ public class Rigidbodyscript : MonoBehaviour
     bool isOnSpeedpad;
     bool isonVisablePad;
     bool isonVisablePadground;
+    bool isonTHICKPAD;
     bool Hitbox;
 
     public AudioSource jumppadsound;
@@ -36,28 +44,32 @@ public class Rigidbodyscript : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1f;
-        //BoxCollider Hitbox = gameObject.transform.GetChild(1).gameObject.GetComponent<BoxCollider>();
+        capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
+        
     }
+
 
     void Update()
     {
 
 
         //grounding
-        isGrounded = Physics.CheckSphere(new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), 0.4f, Ground);
+        isGrounded = Physics.CheckSphere(new Vector3(transform.position.x, transform.position.y - collisionDistance, transform.position.z), grounddistance, Ground);
         
         //if you are on jumppad
-        isonjumppad = Physics.CheckSphere(new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), 0.4f, Jumppad);
+        isonjumppad = Physics.CheckSphere(new Vector3(transform.position.x, transform.position.y - collisionDistance, transform.position.z), grounddistance, Jumppad);
 
         //If you are on speedpad
-        isOnSpeedpad = Physics.CheckSphere(new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), 0.4f, SpeedPad);
+        isOnSpeedpad = Physics.CheckSphere(new Vector3(transform.position.x, transform.position.y - collisionDistance, transform.position.z), grounddistance, SpeedPad);
 
         //if you are on Visable Pad
-        isonVisablePad = Physics.CheckSphere(new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), 0.4f, VisablePad);
+        isonVisablePad = Physics.CheckSphere(new Vector3(transform.position.x, transform.position.y - collisionDistance, transform.position.z), grounddistance, VisablePad);
 
         //if you are on Visable Pad ground
-        isonVisablePadground = Physics.CheckSphere(new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), 0.4f, VisablePadground);
+        isonVisablePadground = Physics.CheckSphere(new Vector3(transform.position.x, transform.position.y - collisionDistance, transform.position.z), grounddistance, VisablePadground);
 
+        //If you are on a THICK pad
+        isonTHICKPAD = Physics.CheckSphere(new Vector3(transform.position.x, transform.position.y - collisionDistance, transform.position.z), grounddistance, THICKpad);
 
         //if you are on a wall
         Hitbox = Physics.CheckBox(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z),new Vector3(0.8f, 0.8f, 0.8f), Quaternion.identity, Ground);
@@ -94,6 +106,10 @@ public class Rigidbodyscript : MonoBehaviour
         {
             jumppadsound.Play();
         }
+        if (Input.GetKeyDown(KeyCode.Space) && isonTHICKPAD)
+        {
+            jump.Play();
+        }
         if (isOnSpeedpad && Speedcounter == 1 && isGrounded == false)
         {
             Speedcounter = 0;
@@ -128,13 +144,20 @@ public class Rigidbodyscript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isonjumppad)
             rb.velocity = new Vector3(rb.velocity.x, jumpPadForce, rb.velocity.z);
 
+        //
+        if (Input.GetKeyDown(KeyCode.Space) && isonTHICKPAD)
+            rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+
+
         //speed pad
         if (isOnSpeedpad)
             moveSpeed = SpeedPadMulti;
+            Debug.Log(moveSpeed);
 
         if (isGrounded)
-
+            hastouchedground = true;
             moveSpeed = BaseMoveSpeed;
+            Debug.Log(moveSpeed);
         //setting movement
 
         rb.velocity = new Vector3(move.x, rb.velocity.y,move.z);
@@ -142,7 +165,34 @@ public class Rigidbodyscript : MonoBehaviour
         //making it so you can wall climb
         if (isGrounded == false && Hitbox == true)
         {
-            rb.velocity = new Vector3(0,-25,0);
+            rb.velocity = new Vector3(0,-10,0);
         }
+
+
+        if (isonTHICKPAD && isTHICK == false && hastouchedground == true)
+        {
+            GameObject Capsule = GameObject.Find("Capsule");
+            GameObject Camera = Capsule.transform.GetChild(0).gameObject;
+            Camera.transform.localPosition = new Vector3(0,6.87f,-1.166f);
+
+            transform.localScale = new Vector3(3,0.5f,3);
+            capsuleCollider.enabled = false;
+            hastouchedground = false;
+            isTHICK = true;
+            Debug.Log(isTHICK);
+        }
+        else if (isonTHICKPAD && isTHICK == true && hastouchedground == true)
+        {
+            GameObject Capsule = GameObject.Find("Capsule");
+            GameObject Camera = Capsule.transform.GetChild(0).gameObject;
+          Camera.transform.localPosition = new Vector3(0,3.41f,-4.05f);
+        
+            transform.localScale = new Vector3(1,1,1);
+            capsuleCollider.enabled = true;
+            isTHICK = false;
+            Debug.Log(isTHICK);
+            hastouchedground = false;
+        }
+
     }
 }

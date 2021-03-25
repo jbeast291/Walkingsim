@@ -8,6 +8,7 @@ public class meshActivate : MonoBehaviour
     [SerializeField] private GameObject myCube;
     
     Renderer rend;
+    public Rigidbody RigidBody;
     
     void Start()
     {
@@ -28,6 +29,16 @@ public class meshActivate : MonoBehaviour
     {
         Color VisableColor = new Color(0.5f,0.5f,0.5f,0.007843137254902f);
         rend.material.SetColor("_Color", VisableColor);
+    }
+
+    public void ActivateRigidBody()
+    {
+        RigidBody.isKinematic = false;
+    }
+
+    public void DeactivateRigidBody()
+    {
+        RigidBody.isKinematic = true;
     }
 }
  

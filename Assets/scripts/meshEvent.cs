@@ -9,10 +9,10 @@ public class meshEvent : MonoBehaviour
 
     [SerializeField] private UnityEvent deactivateCubeTrigger;
 
-    [SerializeField] private UnityEvent ChangeScaleTigger;
-
     public AudioSource Visablepadon;
     public AudioSource Visablepadoff;
+
+    public bool PlaySound = true;
 
 
     private void OnTriggerEnter(Collider other) 
@@ -20,7 +20,10 @@ public class meshEvent : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             activateCubeTrigger.Invoke();
-            Visablepadon.Play();
+            if (PlaySound)
+            {
+                Visablepadon.Play();
+            }
         }
         
     }
@@ -29,7 +32,10 @@ public class meshEvent : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             deactivateCubeTrigger.Invoke();
+            if (PlaySound)
+            {
             Visablepadoff.Play();
+            }
         }
         
     }

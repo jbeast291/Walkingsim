@@ -2382,6 +2382,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccd0c4ad28db47b42a59cf5d58800882, type: 3}
+--- !u!82 &155047644 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 211073781, guid: 0ca753cd149c5d84eb2d30eae332fbda,
+    type: 3}
+  m_PrefabInstance: {fileID: 1198401647}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &155835329
 GameObject:
   m_ObjectHideFlags: 0
@@ -3987,8 +3993,8 @@ MonoBehaviour:
   ChangeScaleTigger:
     m_PersistentCalls:
       m_Calls: []
-  Visablepadon: {fileID: 0}
-  Visablepadoff: {fileID: 0}
+  Visablepadon: {fileID: 825306294}
+  Visablepadoff: {fileID: 155047644}
 --- !u!65 &265750768
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8162,7 +8168,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-36690
+  m_Name: pb_Mesh-2388
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9188,6 +9194,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 42
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &825306294 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 449975965, guid: 0ca753cd149c5d84eb2d30eae332fbda,
+    type: 3}
+  m_PrefabInstance: {fileID: 1198401647}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &831257555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16595,12 +16607,12 @@ PrefabInstance:
         type: 3}
       propertyPath: Visablepadoff
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 155047644}
     - target: {fileID: 7923182861404049541, guid: b735a7e187b11644f8ab3f3a52d4d51d,
         type: 3}
       propertyPath: Visablepadon
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 825306294}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b735a7e187b11644f8ab3f3a52d4d51d, type: 3}
 --- !u!1 &1515004655
