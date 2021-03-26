@@ -18456,7 +18456,7 @@ PrefabInstance:
     - target: {fileID: 1245861693279163000, guid: 0ca753cd149c5d84eb2d30eae332fbda,
         type: 3}
       propertyPath: SpeedPadMulti
-      value: 1000
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 1245861693329706373, guid: 0ca753cd149c5d84eb2d30eae332fbda,
         type: 3}

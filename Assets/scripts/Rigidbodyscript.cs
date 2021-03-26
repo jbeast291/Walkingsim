@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +16,7 @@ public class Rigidbodyscript : MonoBehaviour
     public float SpeedPadMulti = 10f;
     float Speedcounter = 1f;
     bool isTHICK = false;
-    bool hastouchedground = false;
+    bool HasLeftThickPad = true;
     float grounddistance = 0.4f;
     float collisionDistance = 1f;
 
@@ -35,6 +35,10 @@ public class Rigidbodyscript : MonoBehaviour
     bool isonVisablePadground;
     bool isonTHICKPAD;
     bool Hitbox;
+    bool startTimer;
+    float Timer = 0f;
+    float timerLength = 1f;
+
 
     public AudioSource jumppadsound;
     public AudioSource SpeedPadSoundStart;
@@ -121,6 +125,17 @@ public class Rigidbodyscript : MonoBehaviour
             SpeedPadSoundEnd.Play();
         }
 
+        if(startTimer == true)
+        {
+            Timer -= 1 * Time.deltaTime;
+        }
+        if(Timer <= 0)
+        {
+            startTimer = false;
+            Timer = 0;
+        }
+        Debug.Log(Timer);
+
 
 
         //jumping
@@ -152,12 +167,9 @@ public class Rigidbodyscript : MonoBehaviour
         //speed pad
         if (isOnSpeedpad)
             moveSpeed = SpeedPadMulti;
-            Debug.Log(moveSpeed);
 
         if (isGrounded)
-            hastouchedground = true;
             moveSpeed = BaseMoveSpeed;
-            Debug.Log(moveSpeed);
         //setting movement
 
         rb.velocity = new Vector3(move.x, rb.velocity.y,move.z);
@@ -169,7 +181,10 @@ public class Rigidbodyscript : MonoBehaviour
         }
 
 
-        if (isonTHICKPAD && isTHICK == false && hastouchedground == true)
+    }
+    public void thickPadon()
+    {
+        if (isTHICK == false && HasLeftThickPad == true && Timer == 0)
         {
             GameObject Capsule = GameObject.Find("Capsule");
             GameObject Camera = Capsule.transform.GetChild(0).gameObject;
@@ -177,22 +192,33 @@ public class Rigidbodyscript : MonoBehaviour
 
             transform.localScale = new Vector3(3,0.5f,3);
             capsuleCollider.enabled = false;
-            hastouchedground = false;
+            HasLeftThickPad = false;
             isTHICK = true;
-            Debug.Log(isTHICK);
+
+            jumpForce = jumpForce / 1.5f;
+
+            Timer = timerLength;
+            startTimer = true;
         }
-        else if (isonTHICKPAD && isTHICK == true && hastouchedground == true)
+        else if (isTHICK == true && HasLeftThickPad == true && Timer == 0)
         {
             GameObject Capsule = GameObject.Find("Capsule");
             GameObject Camera = Capsule.transform.GetChild(0).gameObject;
-          Camera.transform.localPosition = new Vector3(0,3.41f,-4.05f);
+            Camera.transform.localPosition = new Vector3(0,3.41f,-4.05f);
         
             transform.localScale = new Vector3(1,1,1);
             capsuleCollider.enabled = true;
             isTHICK = false;
-            Debug.Log(isTHICK);
-            hastouchedground = false;
-        }
+            HasLeftThickPad = false;
 
+            jumpForce = jumpForce * 1.5f;
+
+            Timer = timerLength;
+            startTimer = true;
+        }
+    }
+    public void ThickPadOff()
+    {
+        HasLeftThickPad = true;
     }
 }
