@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Rigidbodyscript : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class Rigidbodyscript : MonoBehaviour
     bool HasLeftThickPad = true;
     float grounddistance = 0.4f;
     float collisionDistance = 1f;
+    public int level;
 
     public LayerMask Ground;
     public LayerMask Jumppad;
@@ -134,9 +136,11 @@ public class Rigidbodyscript : MonoBehaviour
             startTimer = false;
             Timer = 0;
         }
-        Debug.Log(Timer);
 
-
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(level);
+        }
 
         //jumping
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
