@@ -645,6 +645,7 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
+    Collab: 1
     UNet: 1
   luminIcon:
     m_Name: 
@@ -658,10 +659,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: 177f79ff-32a5-4c90-826e-9260fd3371f4
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: walking simulator (1)
+  organizationId: jacoby29181
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

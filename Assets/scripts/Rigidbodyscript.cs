@@ -225,4 +225,11 @@ public class Rigidbodyscript : MonoBehaviour
     {
         HasLeftThickPad = true;
     }
+    public void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.tag == "enemycube")
+        {
+            SceneManager.LoadScene(level);
+        }
+    }
 }
