@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class save : MonoBehaviour
 {
     public void SaveGame()
     {
         Save mySave = new Save();
-        string data = JsonUtility.ToJson(SaveData);
+        string data = JsonUtility.ToJson(mySave);
         PlayerPrefs.SetString("MySettings", data);
         PlayerPrefs.Save();
     }
@@ -16,51 +16,37 @@ public class NewBehaviourScript : MonoBehaviour
         string data = PlayerPrefs.GetString("MySettings");
         Save loadedData = JsonUtility.FromJson<Save>(data);
 
-        GameObject.Find("Player2.0").Vector3.x = loadedData.x;
-        GameObject.Find("Player2.0").Vector3.x = loadedData.y;
-        GameObject.Find("Player2.0").Vector3.x = loadedData.z;
+        GameObject.Find("Player2.0").transform.position += new Vector3(loadedData.x, loadedData.y, loadedData.z);
 
         GameObject[] objectstoload = GameObject.FindGameObjectsWithTag("savethisobject");
             
         for (int i = 0; i < objectstoload.Length; i++)
         {
-            objectstoload[i].Vector3.x = loadedData.Coords[i];
-            objectstoload[i].Vector3.y = loadedData.Coords[i+1];
-            objectstoload[i].Vector3.z = loadedData.Coords[i+2];
+            Vector3 v = new Vector3(loadedData.Coords[i], loadedData.Coords[i+1], loadedData.Coords[1+2]);
+            objectstoload[i].transform.position += v;
         }
 
     }
-
-    // Start is called before the first frame update
-    void Start()
+    void start()
     {
-        
+        LoadGame();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 }
 public class Save
 {
+    public float x = GameObject.Find("Player2.0").transform.localPosition.x;
+    public float y = GameObject.Find("Player2.0").transform.localPosition.y;
+    public float z = GameObject.Find("Player2.0").transform.localPosition.z;
 
-    float x = GameObject.Find("Player2.0").Vector3.x;
-    float y = GameObject.Find("Player2.0").Vector3.y;
-    float z = GameObject.Find("Player2.0").Vector3.z;
-
-    GameObject[] objectstosave = GameObject.FindGameObjectsWithTag("savethisobject");
-
-    public float[] Coords = new Float[objectstosave.Length * 3];
+    public static GameObject[] objectstosave = GameObject.FindGameObjectsWithTag("savethisobject");
+    public float[] Coords = new float[objectstosave.Length * 3];
     public Save()
     {
     for (int i = 0; i < objectstosave.Length; i++)
     {
-        Coords[i] = objectstosave[i].Vector3.x;
-        Coords[i+1] = objectstosave[i].Vector3.y;
-        Coords[i+2] = objectstosave[i].Vector3.z;
+        Coords[i] = objectstosave[i].transform.localPosition.x;
+        Coords[i+1] = objectstosave[i].transform.localPosition.y;
+        Coords[i+2] = objectstosave[i].transform.localPosition.z;
     }
     }
     

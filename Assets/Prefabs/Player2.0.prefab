@@ -919,6 +919,7 @@ GameObject:
   - component: {fileID: 1245861693279163000}
   - component: {fileID: 1245861693279163007}
   - component: {fileID: 1188785338}
+  - component: {fileID: 4047162275327669351}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -1027,6 +1028,7 @@ MonoBehaviour:
   jumpForce: 10
   jumpPadForce: 30
   SpeedPadMulti: 33
+  level: 0
   Ground:
     serializedVersion: 2
     m_Bits: 256
@@ -1042,6 +1044,9 @@ MonoBehaviour:
   VisablePadground:
     serializedVersion: 2
     m_Bits: 4096
+  THICKpad:
+    serializedVersion: 2
+    m_Bits: 0
   jumppadsound: {fileID: 375942419}
   SpeedPadSoundStart: {fileID: 1641343112}
   SpeedPadSoundEnd: {fileID: 744898683}
@@ -1076,6 +1081,18 @@ CapsuleCollider:
   m_Height: 1.0228882
   m_Direction: 1
   m_Center: {x: 0, y: -0.5, z: 0}
+--- !u!114 &4047162275327669351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245861693279163010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5e79e087fcdae478b9153eef1d6655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1245861693329706373
 GameObject:
   m_ObjectHideFlags: 0
