@@ -16,7 +16,7 @@ public class Rigidbodyscript : MonoBehaviour
     public float jumpPadForce = 30f;
     public float SpeedPadMulti = 10f;
     float Speedcounter = 1f;
-    bool isTHICK = false;
+    public bool isTHICK = false;
     bool HasLeftThickPad = true;
     float grounddistance = 0.4f;
     float collisionDistance = 1f;
@@ -47,14 +47,12 @@ public class Rigidbodyscript : MonoBehaviour
     public AudioSource SpeedPadSoundEnd;
     public AudioSource jump;
 
-    public save mySave;
-
     void Start()
     {
         Time.timeScale = 1f;
         capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
 
-        mySave.LoadGame();
+
     }
 
 
@@ -193,35 +191,11 @@ public class Rigidbodyscript : MonoBehaviour
     {
         if (isTHICK == false && HasLeftThickPad == true && Timer == 0)
         {
-            GameObject Capsule = GameObject.Find("Capsule");
-            GameObject Camera = Capsule.transform.GetChild(0).gameObject;
-            Camera.transform.localPosition = new Vector3(0,6.87f,-1.166f);
-
-            transform.localScale = new Vector3(3,0.5f,3);
-            capsuleCollider.enabled = false;
-            HasLeftThickPad = false;
-            isTHICK = true;
-
-            jumpForce = jumpForce / 1.5f;
-
-            Timer = timerLength;
-            startTimer = true;
+            setthick();
         }
         else if (isTHICK == true && HasLeftThickPad == true && Timer == 0)
         {
-            GameObject Capsule = GameObject.Find("Capsule");
-            GameObject Camera = Capsule.transform.GetChild(0).gameObject;
-            Camera.transform.localPosition = new Vector3(0,3.41f,-4.05f);
-        
-            transform.localScale = new Vector3(1,1,1);
-            capsuleCollider.enabled = true;
-            isTHICK = false;
-            HasLeftThickPad = false;
-
-            jumpForce = jumpForce * 1.5f;
-
-            Timer = timerLength;
-            startTimer = true;
+            setunthick();
         }
     }
     public void ThickPadOff()
@@ -234,5 +208,37 @@ public class Rigidbodyscript : MonoBehaviour
         {
             SceneManager.LoadScene(level);
         }
+    }
+    public void setthick()
+    {
+        GameObject Capsule = GameObject.Find("Capsule");
+        GameObject Camera = Capsule.transform.GetChild(0).gameObject;
+        Camera.transform.localPosition = new Vector3(0,6.87f,-1.166f);
+
+        transform.localScale = new Vector3(3,0.5f,3);
+        capsuleCollider.enabled = false;
+        HasLeftThickPad = false;
+        isTHICK = true;
+
+        jumpForce = 7;
+
+        Timer = timerLength;
+        startTimer = true;
+    }
+    public void setunthick()
+    {
+        GameObject Capsule = GameObject.Find("Capsule");
+        GameObject Camera = Capsule.transform.GetChild(0).gameObject;
+        Camera.transform.localPosition = new Vector3(0,3.41f,-4.05f);
+        
+        transform.localScale = new Vector3(1,1,1);
+        capsuleCollider.enabled = true;
+        isTHICK = false;
+        HasLeftThickPad = false;
+
+        jumpForce = 10;
+
+        Timer = timerLength;
+        startTimer = true;
     }
 }

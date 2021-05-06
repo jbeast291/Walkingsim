@@ -59,7 +59,6 @@ public class Enemyblock : MonoBehaviour
     void Update()
     {
         position = transform.position;
-        Debug.Log(pos2);
         if(Time.timeScale == 1f)
         {
             {
