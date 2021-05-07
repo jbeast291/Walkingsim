@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class save : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class save : MonoBehaviour
             mySave.Coords[i+1] = mySave.objectstosave[j].transform.localPosition.y;
             mySave.Coords[i+2] = mySave.objectstosave[j].transform.localPosition.z;
         }
+        Scene MyScene = SceneManager.GetActiveScene();
+        mySave.level = MyScene.name;
+        Debug.Log(MyScene.name);
         string data = JsonUtility.ToJson(mySave);
         PlayerPrefs.SetString("MySettings", data);
         PlayerPrefs.Save();
@@ -30,15 +34,16 @@ public class save : MonoBehaviour
     {
         string data = PlayerPrefs.GetString("MySettings");
         Save loadedData = JsonUtility.FromJson<Save>(data);
-
+        Debug.Log(loadedData.level);
+        SceneManager.LoadScene(loadedData.level);
+        
         GameObject.Find("Capsule").transform.localPosition = transform.localPosition - transform.localPosition + new Vector3(loadedData.x, loadedData.y, loadedData.z);
         GameObject[] objectstoload = GameObject.FindGameObjectsWithTag("savethisobject");
         for (int i = 0, j = 0; j < objectstoload.Length; j++, i+=3)
         {
             Vector3 v = new Vector3(loadedData.Coords[i], loadedData.Coords[i+1], loadedData.Coords[i+2]);
             objectstoload[j].transform.eulerAngles = loadedData.rotation[j];
-            objectstoload[j].transform.localPosition = v;  
-            Debug.Log(i);
+            objectstoload[j].transform.localPosition = v;   
         }
         if(loadedData.isthick == true)
         {
@@ -51,14 +56,22 @@ public class save : MonoBehaviour
 
     }
     public Rigidbodyscript a;
-    void start()
+
+    void Awake()
     {
         LoadGame();
+    }
+    void start()
+    {
+
         a = FindObjectOfType<Rigidbodyscript>();
     }
     void Update() 
     {
-        Debug.Log(a.isTHICK);
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+
+        }
     }
 }
 
@@ -74,5 +87,7 @@ public class Save
 
     public Vector3[] rotation;
     public float[] Coords;
+
+    public string level;
 }
 
