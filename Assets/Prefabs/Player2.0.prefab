@@ -903,7 +903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1245861693279163006}
-  sensitivity: 200
+  sensitivity: 150
 --- !u!1 &1245861693279163010
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,6 +920,7 @@ GameObject:
   - component: {fileID: 1245861693279163007}
   - component: {fileID: 1188785338}
   - component: {fileID: 4047162275327669351}
+  - component: {fileID: 1315903963}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -935,7 +936,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1245861693279163010}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.084472656, y: -0.090026855, z: 49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1245861691413677770}
@@ -1028,7 +1029,8 @@ MonoBehaviour:
   jumpForce: 10
   jumpPadForce: 30
   SpeedPadMulti: 33
-  level: 0
+  isTHICK: 0
+  level: 5
   Ground:
     serializedVersion: 2
     m_Bits: 256
@@ -1046,7 +1048,7 @@ MonoBehaviour:
     m_Bits: 4096
   THICKpad:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8192
   jumppadsound: {fileID: 375942419}
   SpeedPadSoundStart: {fileID: 1641343112}
   SpeedPadSoundEnd: {fileID: 744898683}
@@ -1093,6 +1095,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5e79e087fcdae478b9153eef1d6655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  a: {fileID: 1245861693279163000}
+--- !u!114 &1315903963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245861693279163010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cc8e6d2323b16e4c9be459bd9a644c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCube: {fileID: 0}
+  RigidBody: {fileID: 0}
 --- !u!1 &1245861693329706373
 GameObject:
   m_ObjectHideFlags: 0

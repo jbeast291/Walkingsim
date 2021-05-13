@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class save : MonoBehaviour
 {
+    public Rigidbodyscript a;
     public void SaveGame()
     {
         Save mySave = new Save();
@@ -34,8 +35,6 @@ public class save : MonoBehaviour
     {
         string data = PlayerPrefs.GetString("MySettings");
         Save loadedData = JsonUtility.FromJson<Save>(data);
-        Debug.Log(loadedData.level);
-        SceneManager.LoadScene(loadedData.level);
         
         GameObject.Find("Capsule").transform.localPosition = transform.localPosition - transform.localPosition + new Vector3(loadedData.x, loadedData.y, loadedData.z);
         GameObject[] objectstoload = GameObject.FindGameObjectsWithTag("savethisobject");
@@ -53,18 +52,17 @@ public class save : MonoBehaviour
         {
             a.setunthick();
         }
-
+        Scene myScene = SceneManager.GetActiveScene();
+        if(loadedData.level == myScene.name)
+        {
+            return;
+        }
+        SceneManager.LoadScene(loadedData.level);
     }
-    public Rigidbodyscript a;
 
-    void Awake()
+    void Start()
     {
         LoadGame();
-    }
-    void start()
-    {
-
-        a = FindObjectOfType<Rigidbodyscript>();
     }
     void Update() 
     {

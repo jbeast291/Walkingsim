@@ -3990,11 +3990,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  ChangeScaleTigger:
-    m_PersistentCalls:
-      m_Calls: []
   Visablepadon: {fileID: 825306294}
   Visablepadoff: {fileID: 155047644}
+  PlaySound: 1
 --- !u!65 &265750768
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13124,6 +13122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCube: {fileID: 1126706028}
+  RigidBody: {fileID: 0}
 --- !u!1001 &1139006615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13378,6 +13377,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1245861693279163000, guid: 0ca753cd149c5d84eb2d30eae332fbda,
+        type: 3}
+      propertyPath: level
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1245861693329706373, guid: 0ca753cd149c5d84eb2d30eae332fbda,
         type: 3}
       propertyPath: m_Name
@@ -13396,7 +13400,7 @@ PrefabInstance:
     - target: {fileID: 1245861693329706374, guid: 0ca753cd149c5d84eb2d30eae332fbda,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 369.6299
+      value: 322
       objectReference: {fileID: 0}
     - target: {fileID: 1245861693329706374, guid: 0ca753cd149c5d84eb2d30eae332fbda,
         type: 3}
@@ -19792,6 +19796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCube: {fileID: 1919819703}
+  RigidBody: {fileID: 0}
 --- !u!64 &1919819705
 MeshCollider:
   m_ObjectHideFlags: 0

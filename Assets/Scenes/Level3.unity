@@ -446,6 +446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCube: {fileID: 17009691}
+  RigidBody: {fileID: 0}
 --- !u!43 &33546684
 Mesh:
   m_ObjectHideFlags: 0
@@ -3585,11 +3586,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  ChangeScaleTigger:
-    m_PersistentCalls:
-      m_Calls: []
   Visablepadon: {fileID: 449975965}
   Visablepadoff: {fileID: 211073781}
+  PlaySound: 1
 --- !u!65 &435478021
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4540,11 +4539,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  ChangeScaleTigger:
-    m_PersistentCalls:
-      m_Calls: []
   Visablepadon: {fileID: 0}
   Visablepadoff: {fileID: 0}
+  PlaySound: 1
 --- !u!65 &497560275
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7171,7 +7168,7 @@ PrefabInstance:
     - target: {fileID: 1245861693329706374, guid: 0ca753cd149c5d84eb2d30eae332fbda,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -368.71
+      value: -418
       objectReference: {fileID: 0}
     - target: {fileID: 1245861693329706374, guid: 0ca753cd149c5d84eb2d30eae332fbda,
         type: 3}
@@ -7796,6 +7793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCube: {fileID: 938680379}
+  RigidBody: {fileID: 0}
 --- !u!43 &951321488
 Mesh:
   m_ObjectHideFlags: 0
@@ -10134,11 +10132,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  ChangeScaleTigger:
-    m_PersistentCalls:
-      m_Calls: []
   Visablepadon: {fileID: 449975965}
   Visablepadoff: {fileID: 211073781}
+  PlaySound: 1
 --- !u!65 &1098508746
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10754,6 +10750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCube: {fileID: 1111415439}
+  RigidBody: {fileID: 0}
 --- !u!1 &1114258002
 GameObject:
   m_ObjectHideFlags: 0
@@ -13356,6 +13353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCube: {fileID: 1304480891}
+  RigidBody: {fileID: 0}
 --- !u!43 &1310507561
 Mesh:
   m_ObjectHideFlags: 0
@@ -14867,6 +14865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCube: {fileID: 1412606530}
+  RigidBody: {fileID: 0}
 --- !u!1 &1426340351
 GameObject:
   m_ObjectHideFlags: 0
@@ -17042,11 +17041,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  ChangeScaleTigger:
-    m_PersistentCalls:
-      m_Calls: []
   Visablepadon: {fileID: 0}
   Visablepadoff: {fileID: 0}
+  PlaySound: 1
 --- !u!65 &1597085448
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17973,6 +17970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCube: {fileID: 1617496240}
+  RigidBody: {fileID: 0}
 --- !u!1 &1694564986
 GameObject:
   m_ObjectHideFlags: 0
@@ -18298,6 +18296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCube: {fileID: 1694564986}
+  RigidBody: {fileID: 0}
 --- !u!43 &1707482399
 Mesh:
   m_ObjectHideFlags: 0
@@ -19064,6 +19063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCube: {fileID: 1746044660}
+  RigidBody: {fileID: 0}
 --- !u!43 &1748124426
 Mesh:
   m_ObjectHideFlags: 0
@@ -20515,6 +20515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCube: {fileID: 1813672589}
+  RigidBody: {fileID: 0}
 --- !u!1001 &1820611338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21117,6 +21118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCube: {fileID: 1862589474}
+  RigidBody: {fileID: 0}
 --- !u!43 &1868725197
 Mesh:
   m_ObjectHideFlags: 0
@@ -22358,11 +22360,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  ChangeScaleTigger:
-    m_PersistentCalls:
-      m_Calls: []
   Visablepadon: {fileID: 449975965}
   Visablepadoff: {fileID: 211073781}
+  PlaySound: 1
 --- !u!65 &1922213132
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23801,6 +23801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCube: {fileID: 2072520829}
+  RigidBody: {fileID: 0}
 --- !u!64 &2072520831
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -25054,6 +25055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCube: {fileID: 2096139403}
+  RigidBody: {fileID: 0}
 --- !u!43 &2126717525
 Mesh:
   m_ObjectHideFlags: 0

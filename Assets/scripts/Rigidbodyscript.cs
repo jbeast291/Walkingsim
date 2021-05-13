@@ -47,11 +47,15 @@ public class Rigidbodyscript : MonoBehaviour
     public AudioSource SpeedPadSoundEnd;
     public AudioSource jump;
 
+    public save a;
+
+    void Awake()
+    {
+        capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
+    }
     void Start()
     {
         Time.timeScale = 1f;
-        capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
-
 
     }
 
@@ -217,6 +221,7 @@ public class Rigidbodyscript : MonoBehaviour
 
         transform.localScale = new Vector3(3,0.5f,3);
         capsuleCollider.enabled = false;
+
         HasLeftThickPad = false;
         isTHICK = true;
 
@@ -230,7 +235,7 @@ public class Rigidbodyscript : MonoBehaviour
         GameObject Capsule = GameObject.Find("Capsule");
         GameObject Camera = Capsule.transform.GetChild(0).gameObject;
         Camera.transform.localPosition = new Vector3(0,3.41f,-4.05f);
-        
+
         transform.localScale = new Vector3(1,1,1);
         capsuleCollider.enabled = true;
         isTHICK = false;
