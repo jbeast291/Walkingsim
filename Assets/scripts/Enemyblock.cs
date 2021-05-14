@@ -64,7 +64,7 @@ public class Enemyblock : MonoBehaviour
             {
             if (xpos)
             {
-                transform.Translate(Vector3.right * speed);
+                transform.position = Vector3.MoveTowards(transform.position, pos2, Time.deltaTime * speed);
             }
             if (xneg)
             {
