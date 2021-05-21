@@ -47,8 +47,6 @@ public class Rigidbodyscript : MonoBehaviour
     public AudioSource SpeedPadSoundEnd;
     public AudioSource jump;
 
-    public save a;
-
     void Awake()
     {
         capsuleCollider = gameObject.GetComponent<CapsuleCollider>();

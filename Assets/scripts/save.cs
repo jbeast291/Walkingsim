@@ -9,6 +9,9 @@ public class save : MonoBehaviour
     public Rigidbodyscript a;
     public void SaveGame()
     {
+        string systemdata = PlayerPrefs.GetString("MySettings");
+        Save loadedData = JsonUtility.FromJson<Save>(systemdata);
+
         Save mySave = new Save();
         mySave.x = GameObject.Find("Capsule").transform.localPosition.x;
         mySave.y = GameObject.Find("Capsule").transform.localPosition.y;
@@ -28,14 +31,18 @@ public class save : MonoBehaviour
         mySave.level = MyScene.name;
         Debug.Log(MyScene.name);
         string data = JsonUtility.ToJson(mySave);
-        PlayerPrefs.SetString("MySettings", data);
+        PlayerPrefs.SetString(loadedData.Savename, data);
         PlayerPrefs.Save();
     }
     public void LoadGame()
     {
-        string data = PlayerPrefs.GetString("MySettings");
+        string systemdata = PlayerPrefs.GetString("MySettings");
+        Save systemLoadedData = JsonUtility.FromJson<Save>(systemdata);
+
+        string data = PlayerPrefs.GetString(systemLoadedData.Savename);
         Save loadedData = JsonUtility.FromJson<Save>(data);
-        
+        Debug.Log(loadedData.level);
+        Debug.Log(systemLoadedData.Savename);
         GameObject.Find("Capsule").transform.localPosition = transform.localPosition - transform.localPosition + new Vector3(loadedData.x, loadedData.y, loadedData.z);
         GameObject[] objectstoload = GameObject.FindGameObjectsWithTag("savethisobject");
         for (int i = 0, j = 0; j < objectstoload.Length; j++, i+=3)
@@ -57,7 +64,9 @@ public class save : MonoBehaviour
         {
             return;
         }
+        
         SceneManager.LoadScene(loadedData.level);
+
     }
 
     void Start()
@@ -68,8 +77,19 @@ public class save : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.F))
         {
-
+            SystemSave();
         }
+    }
+    public void SystemSave()
+    {
+        Save mySave = new Save();
+        Scene LoadedScene = SceneManager.GetActiveScene();
+        mySave.lastLevelLoaded = LoadedScene.name;
+
+
+        string data = JsonUtility.ToJson(mySave);
+        PlayerPrefs.SetString("MySettings", data);
+        PlayerPrefs.Save(); 
     }
 }
 
@@ -87,5 +107,9 @@ public class Save
     public float[] Coords;
 
     public string level;
-}
 
+    public string Save1;
+
+    public string lastLevelLoaded;
+    public string Savename;
+}
