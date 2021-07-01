@@ -45,20 +45,5 @@ public class Savesystem : MonoBehaviour
         PlayerPrefs.SetString("MySettings", data);
         PlayerPrefs.Save();
     }
-    //  public void load1()
-    //  {
-    //      string data = PlayerPrefs.GetString("Save1");
-    //      Save loadedData = JsonUtility.FromJson<Save>(data);
-    //  }
-    //  public void load2()
-    //  {
-    //      string data = PlayerPrefs.GetString("Save2");
-    //      Save loadedData = JsonUtility.FromJson<Save>(data);
-    //  }
-    //  public void load3()
-    //  {
-    //      string data = PlayerPrefs.GetString("Save3");
-    //     Save loadedData = JsonUtility.FromJson<Save>(data);
-    //  }
 }
 

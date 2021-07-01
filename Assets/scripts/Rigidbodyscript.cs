@@ -210,6 +210,10 @@ public class Rigidbodyscript : MonoBehaviour
         {
             SceneManager.LoadScene(level);
         }
+        if(other.gameObject.tag != "movingplatform")
+        {
+            this.transform.parent = null;
+        }
     }
     public void setthick()
     {

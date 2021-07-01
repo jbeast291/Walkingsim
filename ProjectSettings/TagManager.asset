@@ -6,6 +6,7 @@ TagManager:
   tags:
   - enemycube
   - savethisobject
+  - movingplatform
   layers:
   - Default
   - TransparentFX

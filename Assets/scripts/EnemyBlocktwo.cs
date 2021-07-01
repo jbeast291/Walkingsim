@@ -15,10 +15,13 @@ public class EnemyBlocktwo : MonoBehaviour
     private float Counter;
 
     public float speed;
+
+    GameObject Player;
     void Start()
     {
         transform.localPosition = pos1;
         Counter = 1;
+        Player = GameObject.Find("Player2.0");
     }
     void Update()
     {
@@ -43,6 +46,28 @@ public class EnemyBlocktwo : MonoBehaviour
             {
                 Counter = 1;
             }
+
+            
+        }
+
+    }
+    private void OnCollisionEnter(Collision other) 
+    {
+        Debug.Log("test");
+        if(other.gameObject.tag == "Player")
+        {
+            other.transform.parent = this.transform;
+            Debug.Log("collided");
+        }
+    }
+    public void OnCollisionExit(Collision other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            Debug.Log(Vector3.RotateTowards(transform.forward, pos2, Mathf.PI * 2, 0.0f));
+            other.transform.parent = null;
+            other.gameObject.GetComponent<Rigidbody>().AddForce(transform.right * 100 , ForceMode.VelocityChange);
+            
         }
     }
 }
