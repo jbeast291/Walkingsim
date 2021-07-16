@@ -15,13 +15,20 @@ public class EnemyBlocktwo : MonoBehaviour
     private float Counter;
 
     public float speed;
-
+    float test;
     GameObject Player;
+
+    Rigidbodyscript Rbc;
+    Rigidbody PlayerRigidbody;
     void Start()
     {
         transform.localPosition = pos1;
         Counter = 1;
-        Player = GameObject.Find("Player2.0");
+        
+        Player = GameObject.Find("Capsule");
+        Rbc = Player.GetComponent<Rigidbodyscript>();
+        PlayerRigidbody = Player.GetComponent<Rigidbody>();
+
     }
     void Update()
     {
@@ -46,14 +53,29 @@ public class EnemyBlocktwo : MonoBehaviour
             {
                 Counter = 1;
             }
-
-            
         }
-
+    }
+    void FixedUpdate()
+    {
+        
+        if(Rbc.isGrounded == false)
+        {
+            if(test >= 0)
+            {
+            PlayerRigidbody.velocity = new Vector3(-(speed * 100) + test + PlayerRigidbody.velocity.x, PlayerRigidbody.velocity.y, PlayerRigidbody.velocity.z);
+            }
+            if(test >= 1)
+            {
+            test = test - 0.1f;
+            }
+            if(test <= 1)
+            {
+            test = test - 0.01f;
+            }
+        }
     }
     private void OnCollisionEnter(Collision other) 
     {
-        Debug.Log("test");
         if(other.gameObject.tag == "Player")
         {
             other.transform.parent = this.transform;
@@ -64,10 +86,10 @@ public class EnemyBlocktwo : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            Debug.Log(Vector3.RotateTowards(transform.forward, pos2, Mathf.PI * 2, 0.0f));
             other.transform.parent = null;
-            other.gameObject.GetComponent<Rigidbody>().AddForce(transform.right * 100 , ForceMode.VelocityChange);
-            
+            Player = other.gameObject;
+            test = speed * 100;
         }
     }
 }
+

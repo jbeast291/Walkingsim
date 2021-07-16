@@ -30,7 +30,7 @@ public class Rigidbodyscript : MonoBehaviour
     public LayerMask THICKpad;
 
 
-    bool isGrounded;
+    public bool isGrounded;
     bool isonjumppad;
     bool isOnSpeedpad;
     bool isonVisablePad;
