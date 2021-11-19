@@ -13,9 +13,9 @@ public class save : MonoBehaviour
         Save loadedData = JsonUtility.FromJson<Save>(systemdata);
 
         Save mySave = new Save();
-        mySave.x = GameObject.Find("Capsule").transform.localPosition.x;
-        mySave.y = GameObject.Find("Capsule").transform.localPosition.y;
-        mySave.z = GameObject.Find("Capsule").transform.localPosition.z;
+        mySave.x = GameObject.Find("Capsule").transform.position.x;
+        mySave.y = GameObject.Find("Capsule").transform.position.y;
+        mySave.z = GameObject.Find("Capsule").transform.position.z;
         mySave.objectstosave = GameObject.FindGameObjectsWithTag("savethisobject");
         mySave.rotation = new Vector3[mySave.objectstosave.Length];
         mySave.Coords = new float[mySave.objectstosave.Length * 3];
@@ -23,9 +23,9 @@ public class save : MonoBehaviour
         for (int i = 0, j = 0; j < mySave.objectstosave.Length; j++, i+=3)
         {
             mySave.rotation[j] = mySave.objectstosave[j].transform.eulerAngles;
-            mySave.Coords[i] = mySave.objectstosave[j].transform.localPosition.x;
-            mySave.Coords[i+1] = mySave.objectstosave[j].transform.localPosition.y;
-            mySave.Coords[i+2] = mySave.objectstosave[j].transform.localPosition.z;
+            mySave.Coords[i] = mySave.objectstosave[j].transform.position.x;
+            mySave.Coords[i+1] = mySave.objectstosave[j].transform.position.y;
+            mySave.Coords[i+2] = mySave.objectstosave[j].transform.position.z;
         }
         Scene MyScene = SceneManager.GetActiveScene();
         mySave.level = MyScene.name;
@@ -41,16 +41,24 @@ public class save : MonoBehaviour
 
         string data = PlayerPrefs.GetString(systemLoadedData.Savename);
         Save loadedData = JsonUtility.FromJson<Save>(data);
-        Debug.Log(loadedData.level);
-        Debug.Log(systemLoadedData.Savename);
-        GameObject.Find("Capsule").transform.localPosition = transform.localPosition - transform.localPosition + new Vector3(loadedData.x, loadedData.y, loadedData.z);
+        GameObject.Find("Capsule").transform.position = transform.position - transform.position + new Vector3(loadedData.x, loadedData.y, loadedData.z);
         GameObject[] objectstoload = GameObject.FindGameObjectsWithTag("savethisobject");
-        for (int i = 0, j = 0; j < objectstoload.Length; j++, i+=3)
+        Debug.Log(objectstoload.Length);
+        try
         {
-            Vector3 v = new Vector3(loadedData.Coords[i], loadedData.Coords[i+1], loadedData.Coords[i+2]);
-            objectstoload[j].transform.eulerAngles = loadedData.rotation[j];
-            objectstoload[j].transform.localPosition = v;   
+            for (int i = 0, j = 0; j < objectstoload.Length; j++, i+=3)
+            {
+                Vector3 v = new Vector3(loadedData.Coords[i], loadedData.Coords[i+1], loadedData.Coords[i+2]);
+                objectstoload[j].transform.eulerAngles = loadedData.rotation[j];
+                objectstoload[j].transform.position = v;   
+            }
         }
+        catch (System.Exception)
+        {
+            
+            throw;
+        }
+
         if(loadedData.isthick == true)
         {
             a.setthick();
@@ -60,11 +68,15 @@ public class save : MonoBehaviour
             a.setunthick();
         }
         Scene myScene = SceneManager.GetActiveScene();
+        Debug.Log(loadedData.level);
         if(loadedData.level == myScene.name)
         {
             return;
         }
-        
+        if(loadedData.level == string.Empty)
+        {
+            return;
+        }
         SceneManager.LoadScene(loadedData.level);
 
     }

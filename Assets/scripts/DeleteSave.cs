@@ -14,6 +14,10 @@ public class DeleteSave : MonoBehaviour
     public void saveDelete()
     {
         Save mySave = new Save();
+        mySave.x = -320.1251f;
+        mySave.y = 120f;
+        mySave.z = -200f;
+        mySave.level = "Level1";
         string data = JsonUtility.ToJson(mySave);
         PlayerPrefs.SetString(savename, data);
         PlayerPrefs.Save();

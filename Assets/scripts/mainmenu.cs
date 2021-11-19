@@ -21,7 +21,7 @@ public class mainmenu : MonoBehaviour
     public void PlayGame ()
     {
         SceneManager.LoadScene(1);
-        PauseMenue.GameIsPaused = false;
+        //PauseMenue.GameIsPaused = false;
         
     }
     public void QuitGame ()

@@ -46,7 +46,7 @@ public class Rigidbodyscript : MonoBehaviour
     public AudioSource SpeedPadSoundStart;
     public AudioSource SpeedPadSoundEnd;
     public AudioSource jump;
-
+    public save savescript;
     void Awake()
     {
         capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
@@ -142,7 +142,7 @@ public class Rigidbodyscript : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(level);
+            savescript.LoadGame();
         }
 
         //jumping

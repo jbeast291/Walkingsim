@@ -7150,6 +7150,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1245861693279163000, guid: 0ca753cd149c5d84eb2d30eae332fbda,
+        type: 3}
+      propertyPath: level
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1245861693329706373, guid: 0ca753cd149c5d84eb2d30eae332fbda,
         type: 3}
       propertyPath: m_Name
@@ -7212,6 +7217,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ca753cd149c5d84eb2d30eae332fbda, type: 3}
+--- !u!114 &808019334 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4047162275327669351, guid: 0ca753cd149c5d84eb2d30eae332fbda,
+    type: 3}
+  m_PrefabInstance: {fileID: 808019333}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5e79e087fcdae478b9153eef1d6655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &892986416
 GameObject:
   m_ObjectHideFlags: 0
@@ -11933,6 +11950,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 460313390, guid: dff07e63c3097d6478817f736be9469c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 808019334}
+    - target: {fileID: 460313390, guid: dff07e63c3097d6478817f736be9469c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 832927712, guid: dff07e63c3097d6478817f736be9469c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 808019334}
+    - target: {fileID: 832927712, guid: dff07e63c3097d6478817f736be9469c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadGame
+      objectReference: {fileID: 0}
     - target: {fileID: 1485593928140503903, guid: dff07e63c3097d6478817f736be9469c,
         type: 3}
       propertyPath: m_Name
@@ -11942,6 +11975,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552640749735756420, guid: dff07e63c3097d6478817f736be9469c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 808019334}
+    - target: {fileID: 7552640749735756420, guid: dff07e63c3097d6478817f736be9469c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SaveGame
       objectReference: {fileID: 0}
     - target: {fileID: 8737662297729579078, guid: dff07e63c3097d6478817f736be9469c,
         type: 3}

@@ -1049,10 +1049,12 @@ MonoBehaviour:
   THICKpad:
     serializedVersion: 2
     m_Bits: 8192
+  isGrounded: 0
   jumppadsound: {fileID: 375942419}
   SpeedPadSoundStart: {fileID: 1641343112}
   SpeedPadSoundEnd: {fileID: 744898683}
   jump: {fileID: 890938990}
+  savescript: {fileID: 4047162275327669351}
 --- !u!54 &1245861693279163007
 Rigidbody:
   m_ObjectHideFlags: 0

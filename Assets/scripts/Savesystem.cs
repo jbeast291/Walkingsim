@@ -14,9 +14,7 @@ public class Savesystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        string data = PlayerPrefs.GetString("MySettings");
-        Save loadedData = JsonUtility.FromJson<Save>(data);
-        Debug.Log(loadedData.lastLevelLoaded);
+        
     }
     public void Save1()
     {
